@@ -1,0 +1,14 @@
+{
+  "name": "reel-kit",
+  "displayName": "Reel Kit",
+  "version": "0.1.0",
+  "description": "Edit raw talking-head recordings into finished vertical videos (Reels, TikTok, Shorts) and research what works: take selection, filler and breath removal, zoom cuts, designed overlay cards, loudness, and a check of the result.",
+  "author": {
+    "name": "robinsadeghpour",
+    "url": "https://github.com/robinsadeghpour"
+  },
+  "homepage": "https://github.com/robinsadeghpour/reel-kit",
+  "repository": "https://github.com/robinsadeghpour/reel-kit",
+  "license": "MIT",
+  "keywords": ["video", "reels", "tiktok", "shorts", "editing", "ffmpeg", "whisper", "content"]
+}

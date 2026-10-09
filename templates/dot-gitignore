@@ -1,0 +1,17 @@
+# Keys
+.env
+
+# Your recordings and renders: large, and yours
+footage/
+out/
+
+# Other people's videos, captions and transcripts, kept for your own analysis only
+research/raw/
+research/videos/
+research/analyses/
+research/frames/
+research/strips/
+research/outliers.json
+research/wall.html
+
+.DS_Store

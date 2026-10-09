@@ -1,0 +1,6 @@
+# Installed by `reel setup` into ~/.reel-kit/venv.
+faster-whisper>=1.1   # transcription, on your own machine
+numpy>=1.26
+pillow>=10.1          # every graphic and all text is drawn with it
+playwright>=1.45      # web page screenshots (reel shots)
+yt-dlp                # research only: fetching reference videos

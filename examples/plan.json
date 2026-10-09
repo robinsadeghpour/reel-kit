@@ -1,0 +1,22 @@
+{
+  "output": "example-v1.mp4",
+  "language": "en",
+  "main": {"file": "footage/example/recording.mp4", "focus": [0.5, 0.3], "head_top": 0.22},
+  "looks": {
+    "wide":  {"zoom": 1.0},
+    "mid":   {"zoom": 1.15},
+    "tight": {"zoom": 1.3}
+  },
+  "tighten": {"max_pause": 0.22},
+  "segments": [
+    {"in": 12.40, "out": 15.90, "layout": "talk", "look": "wide", "line": "The hook, as it was said."},
+    {"in": 15.90, "out": 18.20, "layout": "talk", "look": "tight", "line": "Same sentence, punched in on the number. Touching times: no cut in the sound."},
+    {"in": 31.05, "out": 36.70, "layout": "talk", "look": "mid", "line": "A later take of the second sentence, chosen over two earlier attempts."},
+    {"in": 44.10, "out": 49.30, "layout": "talk", "look": "wide", "line": "The closing line."}
+  ],
+  "graphics": [
+    {"kind": "stat", "value": "2,500", "caption": "a month", "tone": "good", "from": 16.2, "to": 18.2},
+    {"kind": "card", "image": "footage/example/assets/product.png", "url": "example.com", "tilt": -2,
+     "label": {"n": "1/3", "title": "The product"}, "from": 31.4, "to": 36.4}
+  ]
+}

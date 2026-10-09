@@ -1,0 +1,77 @@
+#!/bin/sh
+# reel: run the kit's scripts with the kit's own Python environment.
+# The environment lives in ~/.reel-kit/venv (REEL_KIT_HOME moves it) and is made by `reel setup`.
+set -e
+
+SELF="$0"
+while [ -L "$SELF" ]; do
+  DIR=$(cd "$(dirname "$SELF")" && pwd)
+  SELF=$(readlink "$SELF")
+  case "$SELF" in /*) ;; *) SELF="$DIR/$SELF" ;; esac
+done
+KIT=$(cd "$(dirname "$SELF")/.." && pwd)
+PY="${REEL_KIT_HOME:-$HOME/.reel-kit}/venv/bin/python"
+
+usage() {
+  cat <<'TEXT'
+reel <command> [arguments]
+
+Set up
+  setup      install what the kit needs (Python packages, a browser for screenshots)
+  doctor     check that everything needed is there
+  init       make a project folder: footage/, out/, reel.json, STYLE.md
+
+Edit a recording
+  sheet      stills of a video on one sheet, to see what is in it
+  analyze    write down everything that was said, take by take
+  tighten    take breaths and hesitation pauses out of a plan
+  proof      draw every graphic of a plan on one sheet and test it
+  cut        render a plan
+  verify     check a rendered cut and list where a person should listen
+  shots      screenshot web pages for supporting visuals
+  words      plain transcript with a time for every word
+  grade      compare colour grades side by side
+
+Research what works (needs API keys, costs money)
+  scrape     recent posts of the accounts in research/seeds.json, ranked against each account's own median
+  watch      have a video model describe how the best ones are built
+  shape      length and cuts per minute of the downloaded videos
+  formats    measure the formats listed in research/formats.def.json
+  wall       one page with everything found, to look through
+
+Each command prints its own help with: reel <command> --help
+TEXT
+}
+
+cmd="${1:-help}"
+[ $# -gt 0 ] && shift
+
+case "$cmd" in
+  help|-h|--help)
+    usage
+    exit 0 ;;
+  setup)
+    exec "${REEL_PYTHON:-python3}" "$KIT/scripts/install.py" "$@" ;;
+  doctor|init)
+    exec "${REEL_PYTHON:-python3}" "$KIT/scripts/$cmd.py" "$@" ;;
+  make-sfx)
+    cmd=make_sfx ;;
+esac
+
+case "$cmd" in
+  sheet|analyze|tighten|proof|cut|verify|shots|words|grade|scrape|watch|shape|formats|wall|make_sfx)
+    if [ ! -x "$PY" ]; then
+      echo "reel: not set up yet. Run: reel setup" >&2
+      exit 1
+    fi
+    case "${1:-}" in
+      -h|--help)
+        # Most commands document themselves at the top of their script.
+        exec "$PY" -c 'import ast, sys; print(ast.get_docstring(ast.parse(open(sys.argv[1]).read())))' "$KIT/scripts/$cmd.py" ;;
+    esac
+    exec "$PY" "$KIT/scripts/$cmd.py" "$@" ;;
+  *)
+    echo "reel: unknown command '$cmd'" >&2
+    usage >&2
+    exit 2 ;;
+esac

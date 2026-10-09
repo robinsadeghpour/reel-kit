@@ -1,0 +1,15 @@
+{
+  "name": "reel-kit",
+  "description": "Short-form video editing and research for Claude Code",
+  "owner": {
+    "name": "robinsadeghpour",
+    "url": "https://github.com/robinsadeghpour"
+  },
+  "plugins": [
+    {
+      "name": "reel-kit",
+      "source": "./",
+      "description": "Edit raw talking-head recordings into finished vertical videos, and research what works"
+    }
+  ]
+}

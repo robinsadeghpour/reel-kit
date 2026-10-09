@@ -1,0 +1,7 @@
+# Copy to .env and fill in. Only the research commands need these; editing needs no keys.
+
+# https://console.apify.com/account/integrations  (reel scrape)
+APIFY_TOKEN=
+
+# https://aistudio.google.com/apikey  (reel watch)
+GEMINI_API_KEY=

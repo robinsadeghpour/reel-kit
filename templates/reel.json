@@ -1,0 +1,13 @@
+{
+  "language": "en",
+  "locale": "en-US",
+  "captions": false,
+  "loudness": -15,
+  "sfx_volume": 1.0,
+  "theme": {
+    "accent": "#C8F53C",
+    "warn": "#FF5C4A",
+    "ink": "#0C0C10",
+    "paper": "#FFFFFF"
+  }
+}
